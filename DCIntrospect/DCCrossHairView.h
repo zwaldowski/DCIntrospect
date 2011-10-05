@@ -6,10 +6,8 @@
 
 
 @interface DCCrossHairView : UIView
-{
-}
 
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, strong) UIColor *color;
 
 - (id)initWithFrame:(CGRect)frame color:(UIColor *)aColor;
 

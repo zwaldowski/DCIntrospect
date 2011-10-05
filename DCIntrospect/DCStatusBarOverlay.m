@@ -9,14 +9,8 @@
 @implementation DCStatusBarOverlay
 @synthesize leftLabel, rightLabel;
 
-- (void)dealloc
-{
+- (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-
-	[leftLabel release];
-	[rightLabel release];
-
-	[super dealloc];
 }
 
 #pragma mark Setup
@@ -32,9 +26,8 @@
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.frame];
         backgroundImageView.image = [[UIImage imageNamed:@"statusBarBackground.png"] stretchableImageWithLeftCapWidth:2.0f topCapHeight:0.0f];
         [self addSubview:backgroundImageView];
-        [backgroundImageView release];
 
-		self.leftLabel = [[[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 2.0f, 0.0f)] autorelease];
+		self.leftLabel = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, 2.0f, 0.0f)];
 		self.leftLabel.backgroundColor = [UIColor clearColor];
 		self.leftLabel.textAlignment = UITextAlignmentLeft;
 		self.leftLabel.font = [UIFont boldSystemFontOfSize:12.0f];
@@ -42,7 +35,7 @@
 		self.leftLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		[self addSubview:self.leftLabel];
 
-		self.rightLabel = [[[UILabel alloc] initWithFrame:CGRectOffset(self.frame, -2.0f, 0.0f)] autorelease];
+		self.rightLabel = [[UILabel alloc] initWithFrame:CGRectOffset(self.frame, -2.0f, 0.0f)];
 		self.rightLabel.backgroundColor = [UIColor clearColor];
 		self.rightLabel.font = [UIFont boldSystemFontOfSize:12.0f];
 		self.rightLabel.textAlignment = UITextAlignmentRight;
@@ -50,8 +43,7 @@
 		self.rightLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		[self addSubview:self.rightLabel];
 
-		UITapGestureRecognizer *gestureRecognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)] autorelease];
-		[self addGestureRecognizer:gestureRecognizer];
+		[self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)]];
 
 		[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBarFrame) name:UIDeviceOrientationDidChangeNotification object:nil];

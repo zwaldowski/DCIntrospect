@@ -16,11 +16,8 @@
 @end
 
 @interface DCFrameView : UIView
-{
 
-}
-
-@property (nonatomic, unsafe_unretained) id<DCFrameViewDelegate> delegate;
+@property (nonatomic, assign) id<DCFrameViewDelegate> delegate;
 @property (nonatomic) CGRect mainRect;
 @property (nonatomic) CGRect superRect;
 @property (nonatomic, strong) UILabel *touchPointLabel;

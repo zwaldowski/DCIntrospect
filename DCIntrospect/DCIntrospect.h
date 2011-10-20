@@ -26,8 +26,6 @@
 #endif
 
 @interface DCIntrospect : NSObject <DCFrameViewDelegate, UITextViewDelegate, UIWebViewDelegate>
-{
-}
 
 @property (nonatomic) BOOL keyboardBindingsOn;									// default: YES
 @property (nonatomic) BOOL showStatusBarOverlay;								// default: YES
@@ -44,7 +42,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *objectNames;
 
-@property (nonatomic, unsafe_unretained) UIView *currentView;
+@property (nonatomic, assign) UIView *currentView;
 @property (nonatomic) CGRect originalFrame;
 @property (nonatomic) CGFloat originalAlpha;
 @property (nonatomic, strong) NSMutableArray *currentViewHistory;
